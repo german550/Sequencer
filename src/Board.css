@@ -1,0 +1,11 @@
+.sound1{
+  width:20px;
+  height: 20px;
+}
+.col-sm {
+  width: 28px;
+}
+
+.selected {
+  background-color: blue;
+}
