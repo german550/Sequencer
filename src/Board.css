@@ -9,3 +9,7 @@
 .selected {
   background-color: blue;
 }
+
+.playing {
+  background-color: green;
+}
