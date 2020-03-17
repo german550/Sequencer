@@ -14,8 +14,12 @@ function App() {
   const [snare, setSnare]= useState(falses.slice())
   const [ride, setRide]= useState(falses.slice())
   const [hihat, setHihat]= useState(falses.slice())
+  const [tombase, setTombase]= useState(falses.slice())
+  const [tom2, setTom2]= useState(falses.slice())
 
   const [playing, setPlaying] = useState(false)
+  const [mysound, setMysound] = useState(false)
+
 
   function changeDrum(num){
     let newDrums = drums.slice()
@@ -64,16 +68,36 @@ function App() {
     setHihat(newHihat)
   }
 
+  function changeTombase(num){
+    let newTombase = tombase.slice()
+    newTombase[num] = !newTombase[num]
+    setTombase(newTombase)
+  }
+
+  function changeTom2(num){
+    let newTom2 = tom2.slice()
+    newTom2[num] = !newTom2[num]
+    setTom2(newTom2)
+  }
+
   // function temp(){
   //   let tempDrums = drums.slice()
   //   props.tempDrums.forEach( (bol, i) =>
   // }
+
+
+  drums.forEach(mySound);
+  function mySound(value) {
+if (value === true){
+  play()
+  }
+}
+
   function play(){
-    setPlaying(!playing)
-    // code js of playing sounds
-    // var audio = new Audio('audio_file.mp3');
-    // audio.play();
-    
+
+    var audio = new Audio("https://s3.amazonaws.com/freecodecamp/drums/Kick_n_Hat.mp3");
+    audio.play();
+
     setInterval(function(){
 
     }, 100)
@@ -103,8 +127,8 @@ function App() {
     <Board instruments={snare} click={(num) => changeSnare(num)}/>
     <Board instruments={ride} click={(num) => changeRide(num)}/>
     <Board instruments={hihat} click={(num) => changeHihat(num)}/>
-    <Board instruments={drums}/>
-    <Board instruments={drums}/>
+    <Board instruments={tombase} click={(num) => changeTombase(num)}/>
+    <Board instruments={tom2} click={(num) => changeTom2(num)}/>
     </>
   );
 }
