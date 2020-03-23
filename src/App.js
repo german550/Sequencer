@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useRef} from 'react';
 import logo from './logo.svg';
 import './App.css';
 import Player from './Player.js';
@@ -16,9 +16,19 @@ function App() {
   const [hihat, setHihat]= useState(falses.slice())
   const [tombase, setTombase]= useState(falses.slice())
   const [tom2, setTom2]= useState(falses.slice())
+  const instruments = [drums, sticks, kick, tom, cymbal, snare, ride, hihat, tombase, tom2]
+
+  // const []
+
+
+
 
   const [playing, setPlaying] = useState(false)
   const [mysound, setMysound] = useState(false)
+  const isPlaying = useRef(playing)
+  isPlaying.current = playing
+  const instrumentsRef = useRef(instruments)
+  instrumentsRef.current = instruments
 
 
   function changeDrum(num){
@@ -80,28 +90,66 @@ function App() {
     setTom2(newTom2)
   }
 
-  // function temp(){
-  //   let tempDrums = drums.slice()
-  //   props.tempDrums.forEach( (bol, i) =>
-  // }
 
 
-  drums.forEach(mySound);
-  function mySound(value) {
-if (value === true){
-  play()
+
+//   kick.forEach(mySound);
+//   function mySound(value){
+// if (value === true){
+//   play()
+//   }
+// }
+function playNext (){
+
+const arrSound =["https://s3.amazonaws.com/freecodecamp/drums/Kick_n_Hat.mp3", "https://s3.amazonaws.com/freecodecamp/drums/Heater-6.mp3",
+                "https://s3.amazonaws.com/freecodecamp/drums/Dsc_Oh.mp3", "https://s3.amazonaws.com/freecodecamp/drums/RP4_KICK_1.mp3",
+                "https://s3.amazonaws.com/freecodecamp/drums/Cev_H2.mp3", "https://s3.amazonaws.com/freecodecamp/drums/Bld_H1.mp3",
+                "https://s3.amazonaws.com/freecodecamp/drums/punchy_kick_1.mp3", "https://s3.amazonaws.com/freecodecamp/drums/side_stick_1.mp3",
+                "https://s3.amazonaws.com/freecodecamp/drums/Give_us_a_light.mp3", "https://s3.amazonaws.com/freecodecamp/drums/Dry_Ohh.mp3"]
+
+  let instruments = instrumentsRef.current
+  
+  arrSound.forEach((url, index) =>{
+  if(instruments[index][counter]){
+    var audio = new Audio(url);
+    audio.play();
   }
+})
+
+
+ if(counter === drums.length - 1){
+   counter = 0
+ }else{
+   counter++
+ }
+
+  timer = setTimeout(playNext, 500);
+
+
 }
 
-  function play(){
+let timer;
+let counter = 0
 
-    var audio = new Audio("https://s3.amazonaws.com/freecodecamp/drums/Kick_n_Hat.mp3");
-    audio.play();
+function play(url){
 
-    setInterval(function(){
+    if(!playing){
 
-    }, 100)
-  }
+      //if(drums === true){
+      //  play()
+      timer = setTimeout(playNext, 500);
+    }else {
+      clearTimeout(timer)
+    }
+    setPlaying(!playing)
+
+    //  function myStopFunction() {
+//  clearTimeout(myVar);
+
+
+}
+
+
   return(
 
     <>
@@ -119,10 +167,10 @@ if (value === true){
       <Player url="https://s3.amazonaws.com/freecodecamp/drums/Dry_Ohh.mp3"/>
 
 
-    <Board instruments={drums} click={(num) => changeDrum(num)}/>
-    <Board instruments={sticks} click={(num) => changeSticks(num)}/>
+    <Board instruments={drums} click={(num) => changeDrum(num)} />
+    <Board instruments={sticks} click={(num) => changeSticks(num)} />
     <Board instruments={kick} click={(num) => changeKick(num)}/>
-    <Board instruments={tom} click={(num) => changeTom(num)}/>
+    <Board instruments={tom} click={(num) => changeTom(num)} />
     <Board instruments={cymbal} click={(num) => changeCymbal(num)}/>
     <Board instruments={snare} click={(num) => changeSnare(num)}/>
     <Board instruments={ride} click={(num) => changeRide(num)}/>

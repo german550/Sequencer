@@ -30,7 +30,7 @@ const Player = ({ url }) => {
 
   return (
     <div>
-  
+
       <button className="efect" onClick={toggle}>{playing ? "Pause" : "Play"}</button>
 
     </div>
