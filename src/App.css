@@ -40,16 +40,24 @@
   grid-template-rows: 15% 15% 15% 15% 15% 15% 15%;
 }
 .efect{
+  margin-left: 10px;
   margin-top: 10px;
+  margin-bottom: 20px;
   background-color: red;
   height: 40px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+body {
+  background-image: url(https://storage.googleapis.com/stateless-elclubdelrock-com/2017/01/baladas-heavy-metal.jpg);
+  background-repeat: no-repeat, repeat;
+  background-size: cover;
+}
+.on {
+  font-size: 30px;
+  font-style: italic;
+  font-weight: bold;
+  color:#009900;
+  background: #ffffff;
+  border:#009900;
+  border-radius: 50px;
 }

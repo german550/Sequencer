@@ -13,7 +13,6 @@ function Board(props){
 
 
   return(
-
     <div className="row">
       {buttons}
     </div>

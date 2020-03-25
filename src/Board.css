@@ -1,3 +1,6 @@
+.efects {
+  display: inline;
+}
 .sound1{
   width:20px;
   height: 20px;
@@ -12,4 +15,15 @@
 
 .playing {
   background-color: green;
+}
+.row {
+  margin:auto;
+  width: 700px;
+}
+.tempo {
+  margin-left: 40px;
+  margin-top: 100px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
 }

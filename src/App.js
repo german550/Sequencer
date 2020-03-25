@@ -108,7 +108,7 @@ const arrSound =["https://s3.amazonaws.com/freecodecamp/drums/Kick_n_Hat.mp3", "
                 "https://s3.amazonaws.com/freecodecamp/drums/Give_us_a_light.mp3", "https://s3.amazonaws.com/freecodecamp/drums/Dry_Ohh.mp3"]
 
   let instruments = instrumentsRef.current
-  
+
   arrSound.forEach((url, index) =>{
   if(instruments[index][counter]){
     var audio = new Audio(url);
@@ -154,7 +154,7 @@ function play(url){
 
     <>
       <h1>{playing ? "yes" : "no"}</h1>
-      <button onClick={() => play()}>play</button>
+      <button class="on" onClick={() => play()}>play</button>
       <Player url="https://s3.amazonaws.com/freecodecamp/drums/Kick_n_Hat.mp3"/>
       <Player url="https://s3.amazonaws.com/freecodecamp/drums/Heater-6.mp3"/>
       <Player url="https://s3.amazonaws.com/freecodecamp/drums/Dsc_Oh.mp3"/>
@@ -167,6 +167,10 @@ function play(url){
       <Player url="https://s3.amazonaws.com/freecodecamp/drums/Dry_Ohh.mp3"/>
 
 
+      <button class="tempo">3/4</button>
+      <button class="tempo">4/4</button>
+      <button class="tempo">5/4</button>
+      <button class="tempo">6/8</button>
     <Board instruments={drums} click={(num) => changeDrum(num)} />
     <Board instruments={sticks} click={(num) => changeSticks(num)} />
     <Board instruments={kick} click={(num) => changeKick(num)}/>
@@ -177,7 +181,7 @@ function play(url){
     <Board instruments={hihat} click={(num) => changeHihat(num)}/>
     <Board instruments={tombase} click={(num) => changeTombase(num)}/>
     <Board instruments={tom2} click={(num) => changeTom2(num)}/>
-    </>
+  </>
   );
 }
 
