@@ -27,3 +27,25 @@
   height: 40px;
   border-radius: 50%;
 }
+.play {
+  margin-left: 550px;
+  margin-bottom: 40px;
+  font-size: 30px;
+  font-style: italic;
+  font-weight: bold;
+  color:#009900;
+  background: #ffffff;
+  border:#009900;
+  border-radius: 50px;
+}
+.pause {
+  margin-left: 40px;
+  margin-bottom: 40px;
+  font-size: 30px;
+  font-style: italic;
+  font-weight: bold;
+  color:#009900;
+  background: #ffffff;
+  border:#009900;
+  border-radius: 50px;
+}

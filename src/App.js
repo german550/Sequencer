@@ -17,7 +17,7 @@ function App() {
   const [tombase, setTombase]= useState(falses.slice())
   const [tom2, setTom2]= useState(falses.slice())
   const instruments = [drums, sticks, kick, tom, cymbal, snare, ride, hihat, tombase, tom2]
-
+  const [tempo, setTempo] = useState(10000)
   // const []
 
 
@@ -92,7 +92,12 @@ function App() {
 
 
 
-
+  const arrSound =["https://s3.amazonaws.com/freecodecamp/drums/Kick_n_Hat.mp3", "https://s3.amazonaws.com/freecodecamp/drums/Heater-6.mp3",
+                  "https://s3.amazonaws.com/freecodecamp/drums/Dsc_Oh.mp3", "https://s3.amazonaws.com/freecodecamp/drums/RP4_KICK_1.mp3",
+                  "https://s3.amazonaws.com/freecodecamp/drums/Cev_H2.mp3", "https://s3.amazonaws.com/freecodecamp/drums/Bld_H1.mp3",
+                  "https://s3.amazonaws.com/freecodecamp/drums/punchy_kick_1.mp3", "https://s3.amazonaws.com/freecodecamp/drums/side_stick_1.mp3",
+                  "https://s3.amazonaws.com/freecodecamp/drums/Give_us_a_light.mp3", "https://s3.amazonaws.com/freecodecamp/drums/Dry_Ohh.mp3"]
+let audio = new Audio
 //   kick.forEach(mySound);
 //   function mySound(value){
 // if (value === true){
@@ -101,17 +106,12 @@ function App() {
 // }
 function playNext (){
 
-const arrSound =["https://s3.amazonaws.com/freecodecamp/drums/Kick_n_Hat.mp3", "https://s3.amazonaws.com/freecodecamp/drums/Heater-6.mp3",
-                "https://s3.amazonaws.com/freecodecamp/drums/Dsc_Oh.mp3", "https://s3.amazonaws.com/freecodecamp/drums/RP4_KICK_1.mp3",
-                "https://s3.amazonaws.com/freecodecamp/drums/Cev_H2.mp3", "https://s3.amazonaws.com/freecodecamp/drums/Bld_H1.mp3",
-                "https://s3.amazonaws.com/freecodecamp/drums/punchy_kick_1.mp3", "https://s3.amazonaws.com/freecodecamp/drums/side_stick_1.mp3",
-                "https://s3.amazonaws.com/freecodecamp/drums/Give_us_a_light.mp3", "https://s3.amazonaws.com/freecodecamp/drums/Dry_Ohh.mp3"]
 
   let instruments = instrumentsRef.current
 
   arrSound.forEach((url, index) =>{
   if(instruments[index][counter]){
-    var audio = new Audio(url);
+    audio.src = url
     audio.play();
   }
 })
@@ -123,7 +123,7 @@ const arrSound =["https://s3.amazonaws.com/freecodecamp/drums/Kick_n_Hat.mp3", "
    counter++
  }
 
-  timer = setTimeout(playNext, 500);
+  timer = setTimeout(playNext, tempo);
 
 
 }
@@ -131,30 +131,31 @@ const arrSound =["https://s3.amazonaws.com/freecodecamp/drums/Kick_n_Hat.mp3", "
 let timer;
 let counter = 0
 
-function play(url){
+function play(url,tempo){
 
     if(!playing){
 
       //if(drums === true){
       //  play()
-      timer = setTimeout(playNext, 500);
+      timer = setTimeout(playNext, tempo);
     }else {
       clearTimeout(timer)
     }
-    setPlaying(!playing)
+  }
+function pause() {
+clearTimeout(timer);
+  }
 
-    //  function myStopFunction() {
 //  clearTimeout(myVar);
-
-
-}
-
-
+// function threeFourths(){
+//   setTempo(7000)
+// }
+// function threeFourths(){
+//   setTempo(7000)
+// }
   return(
 
     <>
-      <h1>{playing ? "yes" : "no"}</h1>
-      <button class="on" onClick={() => play()}>play</button>
       <Player url="https://s3.amazonaws.com/freecodecamp/drums/Kick_n_Hat.mp3"/>
       <Player url="https://s3.amazonaws.com/freecodecamp/drums/Heater-6.mp3"/>
       <Player url="https://s3.amazonaws.com/freecodecamp/drums/Dsc_Oh.mp3"/>
@@ -166,11 +167,13 @@ function play(url){
       <Player url="https://s3.amazonaws.com/freecodecamp/drums/Give_us_a_light.mp3"/>
       <Player url="https://s3.amazonaws.com/freecodecamp/drums/Dry_Ohh.mp3"/>
 
-
-      <button class="tempo">3/4</button>
-      <button class="tempo">4/4</button>
-      <button class="tempo">5/4</button>
-      <button class="tempo">6/8</button>
+      <h1>{playing ? "yes" : "no"}</h1>
+      <button class="play" onClick={() => play()}>play</button>
+      <button class="pause" onClick={() => pause()}>pause</button>
+      <button class="tempo" onClick={() => setTempo(7000)}>3/4</button>
+      <button class="tempo" onClick={() => setTempo(500)}>4/4</button>
+      <button class="tempo" onClick={() => setTempo(2000)}>5/4</button>
+      <button class="tempo" onClick={() => setTempo(100)}>6/8</button>
     <Board instruments={drums} click={(num) => changeDrum(num)} />
     <Board instruments={sticks} click={(num) => changeSticks(num)} />
     <Board instruments={kick} click={(num) => changeKick(num)}/>

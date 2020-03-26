@@ -52,12 +52,3 @@ body {
   background-repeat: no-repeat, repeat;
   background-size: cover;
 }
-.on {
-  font-size: 30px;
-  font-style: italic;
-  font-weight: bold;
-  color:#009900;
-  background: #ffffff;
-  border:#009900;
-  border-radius: 50px;
-}
