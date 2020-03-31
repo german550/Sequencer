@@ -134,7 +134,7 @@ let counter = 0
 function play(url,tempo){
 
     if(!playing){
-
+    
       //if(drums === true){
       //  play()
       timer = setTimeout(playNext, tempo);
@@ -166,14 +166,13 @@ clearTimeout(timer);
       <Player url="https://s3.amazonaws.com/freecodecamp/drums/side_stick_1.mp3"/>
       <Player url="https://s3.amazonaws.com/freecodecamp/drums/Give_us_a_light.mp3"/>
       <Player url="https://s3.amazonaws.com/freecodecamp/drums/Dry_Ohh.mp3"/>
-
       <h1>{playing ? "yes" : "no"}</h1>
       <button class="play" onClick={() => play()}>play</button>
       <button class="pause" onClick={() => pause()}>pause</button>
-      <button class="tempo" onClick={() => setTempo(7000)}>3/4</button>
-      <button class="tempo" onClick={() => setTempo(500)}>4/4</button>
-      <button class="tempo" onClick={() => setTempo(2000)}>5/4</button>
-      <button class="tempo" onClick={() => setTempo(100)}>6/8</button>
+      <button class="tempo" onClick={() => setTempo(180)}>3/4</button>
+      <button class="tempo" onClick={() => setTempo(200)}>4/4</button>
+      <button class="tempo" onClick={() => setTempo(300)}>5/4</button>
+      <button class="tempo" onClick={() => setTempo(330)}>6/8</button>
     <Board instruments={drums} click={(num) => changeDrum(num)} />
     <Board instruments={sticks} click={(num) => changeSticks(num)} />
     <Board instruments={kick} click={(num) => changeKick(num)}/>
